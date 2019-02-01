@@ -1,0 +1,44 @@
+{% from "_form.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(form.query_val) }}
+    {{ render_field(form.query) }}
+    </dl>
+  <p><input type=submit value=Search>
+</form>
+
+<h3>Method</h3>
+<p id="desc"></p>
+<h3>Acceptable Queries</h3>
+<p id="examples"></p>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script charset="utf-8" type="text/javascript">
+
+    var methods = {
+        'module':'For a given module or submodule name will return accompanying packages with the respective versions that contain that module or submodule, if a module is selected it will return all possible candidate submodules (non package exclusive)',
+        'version':'For any given package name, returns all versions of that package currently on Pypi as well as their creation date in Unix time',
+        'psubs':'For any given package name this will return all submodules for a given package, this also will give back overlap for any submodules that are contained in packages that contain the same submodule names',
+        'meta':'This is included for the sake of reproducibility, most users will not find themselves using this, but this is information about every package that was processed into the modules database'
+    };
+
+    var examples = {
+        'module':'Ex input: sklearn, sklearn.metrics',
+        'version':'Ex. scikit-learn',
+        'psubs':'Ex. scikit-learn',
+        'meta':'Ex. scikit-learn'
+    };
+
+$('#desc').text(methods['module']);
+$('#examples').text(examples['module']);
+
+
+$('#query').change(function () {
+    $('#desc').text(methods[$('#query').val()]);
+    $('#examples').text(examples[$('#query').val()]);
+});
+
+</script>
