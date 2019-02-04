@@ -60,13 +60,22 @@
         'meta':'Ex. scikit-learn'
     };
 
+    var outputs = {
+        'module':'Query: sklearn \n[{\'_id\': ObjectId(\'5c507355cdad8cde6958126b\'), \'module\': \'sklearn\', \'packages\': [{\'package\': \'scikit-learn\', \'versions\': [\'0.15.0\', \'0.15.0b1\', \'0.15.0b2\']}, {\'package\': \'scikit-learn_runnr\', \'versions\': [\'0.18.dev1\']}], \'submodules\': [\'sklearn.ball_tree\', \'sklearn.base\', \'sklearn.cluster\', \'sklearn.compose\']}] \n Query: sklearn.metrics [{\'_id\': ObjectId(\'5c5073d2cdad8cde695fe94f\'), \'submodule\': \'sklearn.metrics\', \'packages\': [{\'package\': \'scikit-learn\', \'versions\': [\'0.15.0\', \'0.15.0b1\', \'0.15.0b2\',]}, {\'package\': \'scikit-learn_runnr\', \'versions\': [\'0.18.dev1\']}]}]',
+        'version':'[{\'_id\': ObjectId(\'5c3f5b4613b1ffdcddcdaf1a\'), \'package\': \'scikit-learn\', \'versions\': [{\'version\': \'0.10\', \'date_created\': 1326289345}, {\'version\': \'0.11\', \'date_created\': 1336429636}, {\'version\': \'0.12\', \'date_created\': 1346789261}, {\'version\': \'0.12.1\', \'date_created\': 1349734986}, {\'version\': \'0.13\', \'date_created\': 1358809103}, {\'version\': \'0.13.1\', \'date_created\': 1361638165}, {\'version\': \'0.14a1\', \'date_created\': 1375095629}, {\'version\': \'0.14\', \'date_created\': 1375916422}, {\'version\': \'0.14.1\', \'date_created\': 1375972256}, {\'version\': \'0.15.0b1\', \'date_created\': 1402056932}, {\'version\': \'0.15.0b2\', \'date_created\': 1404245593}, {\'version\': \'0.15.0\', \'date_created\': 1405422058}, {\'version\': \'0.15.1\', \'date_created\': 1406907560}, {\'version\': \'0.15.2\', \'date_created\': 1409961200}]',
+        'psubs':'[{\'_id\': \'scikit-learn_runnr\', \'submodules\': [\'sklearn.utils\', \'sklearn.pipeline\', \'sklearn.random_projection\', \'sklearn.qda\', \'sklearn.neural_network\', \'sklearn.datasets\', \'sklearn.neighbors\', \'sklearn.discriminant_analysis\', \'sklearn.mixture\', \'sklearn.ensemble\', \'sklearn.calibration\', \'sklearn.kernel_approximation\', \'sklearn._build_utils\', \'sklearn.dummy\', \'sklearn.cross_validation\', \'sklearn.semi_supervised\', \'sklearn.__check_build\', \'sklearn.grid_search\', \'sklearn.covariance\', \'sklearn.cross_decomposition\', \'sklearn.base\', \'sklearn.learning_curve\', \'sklearn.tree\', \'sklearn.multiclass\', \'sklearn.externals\', \'sklearn.lda\', \'sklearn.decomposition\', \'sklearn.gaussian_process\', \'sklearn.svm\', \'sklearn.feature_extraction\', \'sklearn.manifold\', \'sklearn.naive_bayes\', \'sklearn.metrics\', \'sklearn.isotonic\', \'sklearn.preprocessing\', \'sklearn.feature_selection\', \'sklearn.kernel_ridge\', \'sklearn.linear_model\']}, {\'_id\': \'scikits.learn\', \'submodules\': [\'scikits.learn\']}, {\'_id\': \'scikit-learn\', \'submodules\': [\'sklearn.feature_extraction\', \'sklearn.manifold\', \'sklearn.cluster\', \'sklearn.lda\', \'sklearn.neighbors\', \'sklearn.datasets\', \'sklearn.neural_network\', \'sklearn.gaussian_process\'}]',
+        'meta':'[{\'_id\': ObjectId(\'5c38f83013b1ffdcdd50c43c\'), \'package\': \'scikit-learn\', \'versions\': { \'0.12\': [{\'filename\': \'scikit-learn-0.12.tar.gz\', \'packagetype\': \'sdist\', \'python_version\': \'source\', \'upload_time\': \'2012-09-04T20:07:55\'}], \'0.12.1\': [{\'filename\': \'scikit-learn-0.12.1.tar.gz\', \'packagetype\': \'sdist\', \'python_version\': \'source\', \'upload_time\': \'2012-10-08T22:55:38\'}], \'0.13.1\': [{\'filename\': \'scikit-learn-0.13.1.tar.gz\', \'packagetype\': \'sdist\', \'python_version\': \'source\', \'upload_time\': \'2013-02-23T16:50:23\'}], \'0.14\': [{\'filename\': \'scikit-learn-0.14.tar.gz\', \'packagetype\': \'sdist\', \'python_version\': \'source\', \'upload_time\': \'2013-08-09T17:52:34\'}], \'0.14.1\': [{\'filename\': \'scikit-learn-0.14.1.tar.gz\', \'packagetype\': \'sdist\', \'python_version\': \'source\', \'upload_time\': \'2013-08-09T10:25:44\'}], \'0.14a1\': [{\'filename\': nan, \'packagetype\': nan, \'python_version\': nan, \'upload_time\': nan}], \'0.9\': [{\'filename\': \'scikit-learn-0.9.tar.gz\', \'packagetype\': \'sdist\', \'python_version\': \'source\', \'upload_time\': \'2011-09-22T00:03:10\'}]}}]'
+    };
+
+
 $('#desc').text(methods['module']);
 $('#examples').text(examples['module']);
-
+$('#output').text(outputs['module']);
 
 $('#query').change(function () {
     $('#desc').text(methods[$('#query').val()]);
     $('#examples').text(examples[$('#query').val()]);
+    $('#output').text(outputs[$('#query').val()]);
 });
 
 </script>
