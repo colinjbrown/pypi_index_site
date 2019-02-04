@@ -1,4 +1,8 @@
-{% from "_form.html" import render_field %}
+
+<div>
+<h1>Pypi Reverse Index</h1>
+</div>
+<div id="search">{% from "_form.html" import render_field %}
 <form method=post>
   <dl>
     {{ render_field(form.query_val) }}
@@ -6,15 +10,39 @@
     </dl>
   <p><input type=submit value=Search>
 </form>
+</div>
 
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/search.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/skeleton.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/normalize.css') }}">
+
+
+<div id="information">
 <h3>Method</h3>
-<p id="desc"></p>
-<h3>Acceptable Queries</h3>
-<p id="examples"></p>
-<script
+<div class="info">
+    <pre><code id="desc"></code></pre>
+</div>
+        <h3>Acceptable Queries</h3>
+    <div class="info">
+        <pre><code id="examples"></code></pre>
+    </div>
+</div>
+
+  <h3>Example Output</h3>
+<p>Note: Example Results have been shortened for simplicity</p>
+    <div class="info">
+        <pre><code id="output"></code></pre>
+    </div>
+</div>
+
+<a href="https://github.com/colinjbrown/pypi_index_site" class="button">View on Github<a>
+
+    <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+
+
 
 <script charset="utf-8" type="text/javascript">
 
