@@ -1,17 +1,18 @@
-
+<title>Pypi Reverse Index</title>
 <div>
-<h1>Pypi Reverse Index</h1>
+<h2>Pypi Reverse Index</h2>
 </div>
-<div id="search">{% from "_form.html" import render_field %}
+<div id="search">{% from "_form.html" import render_field, render_autocomplete %}
 <form method=post>
   <dl>
-    {{ render_field(form.query_val) }}
+    {{ render_autocomplete(form.query_val) }}
     {{ render_field(form.query) }}
     </dl>
   <p><input type=submit value=Search>
 </form>
 </div>
 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://gitcdn.link/cdn/dhg/Skeleton/88f03612b05f093e3f235ced77cf89d3a8fcf846/css/normalize.css">
 <link rel="stylesheet" href="https://gitcdn.link/cdn/dhg/Skeleton/88f03612b05f093e3f235ced77cf89d3a8fcf846/css/skeleton.css">
 <link rel="stylesheet" href="{{ url_for('static',filename='styles/search.css') }}">
@@ -42,9 +43,24 @@
   crossorigin="anonymous"></script>
 
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
+    
 <script charset="utf-8" type="text/javascript">
+
+    var key_map = {'module':'names','version':'packages','psubs':'packages','meta':'packages'};
+
+    $.getJSON("{{ url_for('static',filename='data/search.json') }}", function(json) {
+        $( "#query_val" ).autocomplete({
+            minLength:3,
+          source: function( request, response ) {
+                  var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ) + "(?=.{0,7}$)", "i" );
+                  response( $.grep( json[key_map[curr_key]], function( item ){
+                      return matcher.test( item );
+                  }).slice(0,10) );
+              }
+        });
+    });
 
     var curr_key = 'module';
 

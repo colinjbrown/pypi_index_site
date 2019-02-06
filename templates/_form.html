@@ -10,3 +10,17 @@
   {% endif %}
   </dd>
 {% endmacro %}
+
+{% macro render_autocomplete(field) %}
+  <dt>{{ field.label }}
+  <dd class="field"><div class="ui-widget">{{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </div>
+  </dd>
+{% endmacro %}
