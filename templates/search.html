@@ -46,6 +46,8 @@
 
 <script charset="utf-8" type="text/javascript">
 
+    var curr_key = 'module';
+
     var methods = {
         'module':'For a given module or submodule name will return accompanying packages with the respective versions that contain that module or submodule, if a module is selected it will return all possible candidate submodules (non package exclusive)',
         'version':'For any given package name, returns all versions of that package currently on Pypi as well as their creation date in Unix time',
@@ -68,14 +70,21 @@
     };
 
 
-$('#desc').text(methods['module']);
-$('#examples').text(examples['module']);
-$('#output').text(outputs['module']);
+    function set_text(){
+        [{'id':'#desc','arr':methods},{'id':'#examples','arr':examples},{'id':'#output','arr':outputs}].forEach(
+            function (a,b) {
+                $(a.id).text(a.arr[curr_key]);
+            }
+        )
+    }
+
+    set_text();
+
+
 
 $('#query').change(function () {
-    $('#desc').text(methods[$('#query').val()]);
-    $('#examples').text(examples[$('#query').val()]);
-    $('#output').text(outputs[$('#query').val()]);
+    curr_key = $('#query').val();
+    set_text();
     $('.prettyprint').toggleClass('prettyprinted',false);
     PR.prettyPrint();
 });
