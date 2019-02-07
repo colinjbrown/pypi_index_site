@@ -45,19 +45,43 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    
+
 <script charset="utf-8" type="text/javascript">
 
     var key_map = {'module':'names','version':'packages','psubs':'packages','meta':'packages'};
 
+    var topNames = [];
+
+    $.getJSON("https://hugovk.github.io/top-pypi-packages/top-pypi-packages-365-days.json",function (jsondata) {
+        topNames = jsondata['rows'].map((a) => { return a.project;});
+    });
+
+    //FIXME Change this to the proper url when this is public
     $.getJSON("{{ url_for('static',filename='data/search.json') }}", function(json) {
         $( "#query_val" ).autocomplete({
             minLength:3,
           source: function( request, response ) {
                   var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ) + "(?=.{0,7}$)", "i" );
-                  response( $.grep( json[key_map[curr_key]], function( item ){
+                  var matched =  $.grep( json[key_map[curr_key]], function( item ){
                       return matcher.test( item );
-                  }).slice(0,10) );
+                  });
+                  var res = [];
+                  matched = matched.filter(function (a) {
+                      arr_index = topNames.indexOf(a);
+                      if(arr_index > -1){
+                          res.push(arr_index);
+                      }
+                      else{
+                          return a;
+                      }
+                  });
+                  res = res.sort((a, b) => a - b).map((a) => {return topNames[a];});
+                  if(res.length >= 10){
+                      response(res.slice(0,10));
+                  }
+                  else{
+                      response(res.concat(matched.slice(0,10-res.length)));
+                  }
               }
         });
     });
