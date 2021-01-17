@@ -6,13 +6,13 @@ class SearchForm(Form):
     query_val = StringField('Search',[validators.Length(min=1)])
     query = SelectField(u'Query Type', choices=[('module', 'Module/Submodule'), ('version', 'Versions'), ('psubs', 'Package Submodules'),('meta','Database Metadata')])
 
-client = pymongo.MongoClient("mongodb://public1:public1@ds145848.mlab.com:45848/pypi_mod_index",serverSelectionTimeoutMS=5000)
+client = pymongo.MongoClient("mongodb://public1:public1@23.234.231.89:12438/pypi_mod_index",serverSelectionTimeoutMS=5000)
 client.server_info()
 mongo_flag = True
 db = client["pypi_mod_index"]
 top = db['modules']
 subs = db['submodules']
-v_client = pymongo.MongoClient("mongodb://public1:public1@ds153314.mlab.com:53314/pypi3",serverSelectionTimeoutMS=5000)
+v_client = pymongo.MongoClient("mongodb://public1:public1@23.234.231.89:12438/pypi3",serverSelectionTimeoutMS=5000)
 v_db = v_client["pypi3"]
 metadata = v_db['metadata']
 versions = v_db['versions']
