@@ -1,6 +1,6 @@
 # pypi_index_site
 
-This repository contains a front-facing page for a Pypi Reverse Index website. This particular page relies on the existance of the PyPI reverse index database.
+This repository contains a front-facing page for a [Pypi Reverse Index website](http://www.pypi-rev-idx.site/). This particular page relies on the existance of the PyPI reverse index database.
 
 This is a publicly facing database that contains package information about Python package modules and submodules mapped directly to packages including all versions of packages where this is true.
 
