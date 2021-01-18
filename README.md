@@ -4,17 +4,28 @@ This repository contains a front-facing page for a Pypi Reverse Index website. T
 
 This is a publicly facing database that contains package information about Python package modules and submodules mapped directly to packages including all versions of packages where this is true.
 
-To reach the database without accessing this site directly the database can be reached with this public information.
+This database can be reached without accessing the web copy directly via the following MongoDB database:
 
-`23.234.231.89`
-with the following credentials
+IP: `23.234.231.89`
+
+Port: 12438
+
 Username: `public1`
+
 Password: `public1`
+
+Authorization Database: `admin`
+
+#### Pymongo usage example:
+
+`pymongo.MongoClient("mongodb://public1:public1@23.234.231.89:12438/pypi_mod_index",authSource="admin")`
 
 ## Requirements:
 
 `flask`
+
 `pymongo`
+
 `wtforms`
 
 ## Usage:
