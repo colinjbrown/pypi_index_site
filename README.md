@@ -1,4 +1,4 @@
-# pypi_index_site
+# Pypi Reverse Index
 
 This repository contains a front-facing page for a [Pypi Reverse Index website](http://www.pypi-rev-idx.site/). This particular page relies on the existance of the PyPI reverse index database.
 
